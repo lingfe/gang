@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no">
+    <meta content="no-cache" http-equiv="Pragma">
+    <title>详细</title>
+    <meta name="Keywords" content="衣邦人 贝嘟科技 量身定制 触手可及 男士正装 女士旗袍 美女着装顾问 特斯拉 上门量体 凯莱乔治 李加林 私人定制">
+    <meta name="Description" content="衣邦人 贝嘟科技 量身定制 触手可及 男士正装 女士旗袍 美女着装顾问 特斯拉 上门量体 凯莱乔治 李加林 私人定制">
+
+    <!-- 导入公共资源 -->
+    <link rel="stylesheet" href="css/swiper.min.css">
+	<link rel="stylesheet" href="css/clothingInofDetailed.css">
+
+  </head>
+  
+  <!-- angularJs -->
+  <body ng-app="myApp" ng-controller="clothingInofDetailed">
+
+  	<!-- 广告  start -->
+    <div class="advertising">
+      <a href="javascript:;">
+      	<img style="width:100%;float:left;" src="{{imgPath}}images/public/1.jpg">
+      </a>
+    </div>
+    <!-- 广告  end -->
+
+    <!-- 服装信息轮播图  start -->
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+		<div class="swiper-slide" ng-repeat="item in imgArray">
+          <img src="{{item}}">
+        </div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+	<!-- 服装信息轮播图  end -->
+
+    <!-- 服装信息  start -->
+    <div class="title">
+      <p class="p1">
+        <span class="coup">{{info.lable}}</span>{{info.clothingName}}</p>
+      <p class="p_desc">{{info.material}}</p>
+      <p class="p2">
+        <i>￥{{info.salesPrice}}</i>
+        <s>吊牌价：￥{{info.tagPrice}}</s>
+      </p>
+    </div>
+    <div class="common">
+      <img src="{{imgPath}}images/public/2.jpg">
+    </div>
+    <!-- 服装信息  end -->
+
+    <!-- 服装信息详细图  start -->
+    <div class="content">
+      <img class="lazy" ng-repeat="item in infoImgArray" src="{{item}}" alt="">
+    </div>
+    <!-- 商品详细图  end -->
+    
+    <!-- 跳转到预约 -->
+    <div class="bottom">
+    	<a class="yuyue" href="home.html" target="ifms">预约美女免费上门量体</a>
+    </div>
+
+	<!-- js脚本 -->
+    <script src="js/jquery.1.7.2.min.js"></script>
+    <script src="js/jquery.lazyload.js"></script>
+    <script src="js/wap-head.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/clothingInofDetailed.js" ></script>
+    <script>$("img.lazy").lazyload({
+        threshold: 200,
+        placeholder :  "//wxstatic.ybren.com/Public/wap/zhanwei2.png"
+      });</script>
+  </body>
+</html>

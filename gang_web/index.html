@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no">
+    <meta content="no-cache" http-equiv="Pragma">
+    <title>免费预约量体</title>
+    <meta name="Keywords" content="衣邦人 贝嘟科技 量身定制 触手可及 男士正装 女士旗袍 美女着装顾问 特斯拉 上门量体 凯莱乔治 李加林 私人定制">
+    <meta name="Description" content="衣邦人 贝嘟科技 量身定制 触手可及 男士正装 女士旗袍 美女着装顾问 特斯拉 上门量体 凯莱乔治 李加林 私人定制">
+    
+    <!-- 导入 公共资源 -->
+    <link rel="stylesheet" href="css/home.css" />
+    <link href="css/layout.min.css" rel="stylesheet" />
+    <link href="css/scs.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/larea.css">
+
+  </head>
+  
+  <!-- angularJs -->
+  <body  ng-app="myApp" ng-controller="index">
+
+    <!--  菜单栏  start -->
+    <div class="navigation -closed">
+      <a class="home" href="javascript:;">
+        <img src="{{imgPath}}images/index/home.png">
+      </a>
+      <div class="nav">
+        <ul class="first">
+          <div ng-repeat="item in list">
+            <div ng-show="{{item.superiorId == ''|| item.superiorId == null}}">
+                <li class="li-title">{{item.styleName}}</li>
+                    <div ng-repeat="item2 in list">
+                        <div ng-show="{{item.id == item2.superiorId}}">
+                            <li class="li-nav">
+                                <a class="fson" href="javascript:;">{{item2.styleName}}</a>
+                                <ul class="second">
+                                    <div ng-repeat="item3 in list"> 
+                                        <li ng-show="{{item2.id==item3.superiorId}}">
+                                            <a href="javascript:;" ng-click="shopInfo(item3.id,item3.styleName)">
+                                                {{item3.styleName}}
+                                            </a>
+                                        <li>
+                                    </div>
+                                </ul>
+                            </li>
+                        </div>
+                    </div>
+            </div>
+          </div>
+        </ul>
+      </div>
+      <div class="underlay"></div>
+    </div>
+    <!--  菜单栏  end -->
+
+    <!--  头  start -->
+    <div class="hearder">
+      <a href="//m.ybren.com?from=WX-CD&plan=YYLT">
+        <img class="headimg" src="{{imgPath}}images/index/logo.png"></a>
+      <a href="/index.php/Home/Yuyue/newyuyue?lag=english&from=WX-CD&plan=YYLT" class="to_english_ybren">
+        <img src="{{imgPath}}images/index/toengybr.png"></a>
+      <a class="tel" href="tel:400-673-8899">
+        <img src="{{imgPath}}images/index/tel.png"></a>
+    </div>
+    <!--  头  end -->
+
+    <!-- 内容  start -->
+    <iframe id="ifms" name="ifms" style="height:{{wy_height}}px;width:100%;" src="home.html"></iframe>
+    <!-- 内容  end -->
+
+    <!-- 脚本  -->
+    <script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+    <script type="text/javascript" src="js/jquery.api.js"></script>
+    <script type="text/javascript" src="js/wap-head.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.scs.min.js"></script>
+    <script type="text/javascript" src="js/cnaddrarr.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/index.js" ></script>
+  </body>
+</html>

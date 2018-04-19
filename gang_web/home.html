@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no">
+    <meta content="no-cache" http-equiv="Pragma">
+    <title>免费预约量体</title>
+    <meta name="Keywords" content="衣邦人 贝嘟科技 量身定制 触手可及 男士正装 女士旗袍 美女着装顾问 特斯拉 上门量体 凯莱乔治 李加林 私人定制">
+    <meta name="Description" content="衣邦人 贝嘟科技 量身定制 触手可及 男士正装 女士旗袍 美女着装顾问 特斯拉 上门量体 凯莱乔治 李加林 私人定制">
+    
+    <!-- 导入 公共资源 -->
+    <link rel="stylesheet" href="css/home.css" />
+    <link href="css/layout.min.css" rel="stylesheet" />
+    <link href="css/scs.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/larea.css">
+
+  </head>
+  
+  <!-- angularJs -->
+  <body  ng-app="myApp" ng-controller="home">
+
+    <!--  banner图  start -->
+    <div class="advertising">
+      <a href="javascript:;">
+        <img style="width:100%;float:left;" src="{{imgPath}}images/home/1.jpg" alt="1广告图">
+      </a>
+    </div>
+    <div class="banner">
+      <div class="ban_img">
+        <img src="{{imgPath}}images/home/2.png" alt="2.banner图">
+      </div>
+    </div>
+    <div class="phone">
+      <p class="phone_2">截止今日&nbsp;已有
+        <font id='yuyue_num' color="#ffc619">111</font>人预约</p>
+    </div>
+    <!--  banner图  end -->
+
+    <!--  预约表单  start -->
+    <div class="content">
+      <form action="" enctype="multipart/form-data" method="post" name="quantity">
+        <ul>
+          <li>
+            <label class="con-le" for="name">
+              <img src="{{imgPath}}images/home/3.png" alt="3.姓名"></label>
+            <input type="text" ng-model="fullName" value="" id="name" placeholder="输入姓名，预约顾问免费上门量体"></li>
+          <li>
+            <label for="tel">
+              <img src="{{imgPath}}images/home/4.png" alt="4.电话号码"></label>
+            <input type="tel" ng-model="phone" value="" id="tel" placeholder="输入手机，享受一对一专人服务"></li>
+          <li class="li_addr">
+            <div class="div_addr">
+              <label class="con-le" for="addr">
+                <img src="{{imgPath}}images/home/5.png" alt="5.地区">
+              </label>              
+              <input readonly id="myAddrs" name="addr" data-key="19-289-3046" value="广东省 广州市 越秀区"  type="text" />
+            </div>
+          </li>
+          <li>
+            <label for="note">
+              <img src="{{imgPath}}images/home/6.png" alt="6.详细地址">
+            </label>
+            <input type="tel" ng-model="address" value="" id="note" placeholder="详细地址或者偏好类目（选填）"></textarea>
+          </li>
+        </ul>
+        <p class="ptips" style="overflow: hidden;height: 30px;line-height: 30px;padding: 4px 6% 7px;font-size: 9px;color:#B3B3B3">
+          <img src="{{imgPath}}images/home/7.png" alt="7" 
+          style="float: left;width:16px;padding: 7px;">
+          <span style="float: left;">预约即默认同意</span>
+          <a style="float: left;color:#ffc619;text-decoration: underline;" href="userProtocol.html" target="_left">《衣邦人用户协议》</a></p>
+        <a class="button" form="quantity" ng-click="yuyue()">立即预约</a>
+      </form>
+    </div>
+    <!--  预约表单  end -->
+
+    <!--  介绍图  start -->
+    <div class="tel_img">
+      <a href="tel:400-673-8899">
+        <img src="{{imgPath}}images/home/8.jpg" alt="8.联系电话">
+      </a>
+    </div>
+    <div class="dimg">
+      <img class="ceng" src="{{imgPath}}images/home/9.jpg" alt="9.联系电话说明">
+      <img src="{{imgPath}}images/home/10.jpg" alt="10.介绍1">
+      <img src="{{imgPath}}images/home/11.jpg" alt="11.介绍2">
+      <img src="{{imgPath}}images/home/12.jpg" alt="12.标题1">
+    </div>
+    <!--  介绍图  end -->
+
+    <!--  地址 https://wx.ybren.com/index.php/Home/BrandDep/Zhanting start -->
+    <a class="all_addr" href="exhibitionAddress.html" target="_left">
+      点击查看全国展厅地址>>
+    </a>
+    <div class="addr">
+      <p>
+        <span class="left">华北地区：</span>
+        <span class="right">北京全境、 天津全境、 河北(石家庄市、唐山市、邯郸市、邢台市、保定市、沧州市、衡水市、) 山西(太原市、大同市、阳泉市、运城市、临汾市、)</span></p>
+      <p>
+        <span class="left">东北地区：</span>
+        <span class="right">辽宁(沈阳市、大连市、鞍山市、盘锦市、) 吉林(长春市、吉林市、) 黑龙江(哈尔滨市、大庆市、)</span></p>
+      <p>
+        <span class="left">华东地区：</span>
+        <span class="right">上海全境、 江苏全境、 浙江全境、 安徽(合肥市、芜湖市、蚌埠市、淮南市、马鞍山市、铜陵市、安庆市、黄山市、滁州市、宿州市、六安市、) 福建(福州市、厦门市、莆田市、泉州市、漳州市、龙岩市、宁德市、) 江西(南昌市、萍乡市、九江市、新余市、宜春市、抚州市、上饶市、) 山东(济南市、青岛市、淄博市、枣庄市、烟台市、潍坊市、泰安市、威海市、)</span></p>
+      <p>
+        <span class="left">华中地区：</span>
+        <span class="right">河南(郑州市、开封市、洛阳市、平顶山市、安阳市、新乡市、许昌市、南阳市、) 湖北(武汉市、十堰市、宜昌市、襄阳市、鄂州市、荆门市、孝感市、荆州市、黄冈市、) 湖南(长沙市、株洲市、湘潭市、衡阳市、邵阳市、岳阳市、郴州市、)</span></p>
+      <p>
+        <span class="left">华南地区：</span>
+        <span class="right">广东(广州市、深圳市、珠海市、汕头市、佛山市、惠州市、汕尾市、清远市、东莞市、中山市、潮州市、揭阳市、) 广西(南宁市、柳州市、北海市、钦州市、百色市、来宾市、)</span></p>
+      <p>
+        <span class="left">西南地区：</span>
+        <span class="right">重庆全境、 四川(成都市、德阳市、绵阳市、乐山市、眉山市、广安市、) 贵州(贵阳市、六盘水市、遵义市、安顺市、毕节市、黔东南苗族侗族自治州、) 云南(昆明市、曲靖市、玉溪市、)</span></p>
+      <p>
+        <span class="left">西北地区：</span>
+        <span class="right">陕西(西安市、咸阳市、渭南市、汉中市、) 甘肃(兰州市、天水市、) 新疆(乌鲁木齐市、克拉玛依市、昌吉回族自治州、伊犁哈萨克自治州、省辖市、)</span></p>
+    </div>
+    <!--  地址  end -->
+
+    <!--  底部  start -->
+    <div class="footer" id="back_to_top">
+      <a href="javascript:;">立即预约美女免费上门量体</a>
+    </div>
+    <div class="dimg" style="padding-bottom: 10%;"></div>
+    <!--  底部  end -->
+
+	  <!-- 脚本  -->
+    <script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+    <script type="text/javascript" src="js/jquery.api.js"></script>
+    <script type="text/javascript" src="js/wap-head.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.scs.min.js"></script>
+    <script type="text/javascript" src="js/cnaddrarr.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/home.js" ></script>
+  </body>
+</html>
