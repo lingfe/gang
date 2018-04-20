@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="   
+           http://www.springframework.org/schema/beans   
+           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd   
+           http://www.springframework.org/schema/context   
+           http://www.springframework.org/schema/context/spring-context-3.2.xsd  
+           http://www.springframework.org/schema/mvc   
+           http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+           http://www.springframework.org/schema/tx
+           http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+           http://www.springframework.org/schema/task
+           http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+
+	<!-- 自动扫描bean，把所有注解类转换成bean -->
+	<context:component-scan base-package="com.gang" />
+	<!-- 加载数据库配置文件 -->
+	<context:property-placeholder location="classpath*:/gang-jdbc.properties" ignore-resource-not-found="true" ignore-unresolvable="true" />
+	
+	<!-- 加载驱动 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+            <!-- 将StringHttpMessageConverter的默认编码设为UTF-8 -->
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8" />
+            </bean>
+        </mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	<!-- 拦截器配置 -->  
+    <mvc:interceptors>  
+      <!-- session超时 -->  
+      <mvc:interceptor>  
+        <mvc:mapping path="/*/*"/>  
+        <bean class="com.gang.interceptor.Interceptor">  
+          <property name="allowUrls">  
+            <list>  
+              <!-- 如果请求中包含以下路径，则不进行拦截 -->  
+              <value>login</value>
+              <value>gang</value>  
+              <value>js</value>  
+              <value>css</value>  
+              <value>image</value>  
+              <value>images</value>  
+            </list>  
+          </property>  
+        </bean>  
+      </mvc:interceptor>  
+    </mvc:interceptors>
+	
+	<!-- 解决@ResponseBody中文乱码 -->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+  		<property name="messageConverters"> 
+  			<list> 
+   				<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+    			<bean class="org.springframework.http.converter.StringHttpMessageConverter"> 
+    				<property name="supportedMediaTypes"> 
+				     	<list> 
+				      		<value>text/plain;charset=UTF-8</value> 
+				      		<value>text/html;charset=UTF-8</value>
+				      		<value>application/json; charset=UTF-8</value>
+				     	</list> 
+    				</property> 
+   				</bean> 
+   				<bean class="org.springframework.http.converter.ResourceHttpMessageConverter" /> 
+   				<bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter" />
+    			<bean class="org.springframework.http.converter.xml.XmlAwareFormHttpMessageConverter" />
+    			<bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter" />
+   			</list> 
+ 		</property> 
+	</bean> 
+
+	<!-- 视图解析器，当Controller返回XXX字符串时，会在/views/下查找XXX.jsp文件 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/web/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- 数据库连接池 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}" />
+      	<property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <!-- 池启动时创建的连接数量 -->
+        <property name="initialSize" value="${dataSource.initialSize}"/>
+        <!-- 同一时间可以从池分配的最多连接数量。设置为0时表示无限制。 -->
+        <property name="maxActive" value="${dataSource.maxActive}"/>
+        <!-- 池里不会被释放的最多空闲连接数量。设置为0时表示无限制。 -->
+        <property name="maxIdle" value="${dataSource.maxIdle}"/>
+        <!-- 在不新建连接的条件下，池中保持空闲的最少连接数。 -->
+        <property name="minIdle" value="${dataSource.minIdle}"/>
+        <!-- 设置自动回收超时连接  -->
+        <property name="removeAbandoned" value="${dataSource.removeAbandoned}" />
+        <!-- 自动回收超时时间(以秒数为单位) -->
+        <property name="removeAbandonedTimeout" value="${dataSource.removeAbandonedTimeout}"/>
+        <!-- 设置在自动回收超时连接的时候打印连接的超时错误  -->
+        <property name="logAbandoned" value="${dataSource.logAbandoned}"/>
+        <!-- 等待超时以毫秒为单位，在抛出异常之前，池等待连接被回收的最长时间（当没有可用连接时）。设置为-1表示无限等待。  -->  
+        <property name="maxWait" value="${dataSource.maxWait}"/>
+        <!-- 自动提交 -->
+        <property name="defaultAutoCommit" value="${dataSource.defaultAutoCommit}" />
+        <!-- 每30秒运行一次空闲连接回收器 -->
+        <property name="timeBetweenEvictionRunsMillis" value="${dataSource.timeBetweenEvictionRunsMillis}" />
+        <!-- 池中的连接空闲30分钟后被回收 -->
+        <property name="minEvictableIdleTimeMillis" value="${dataSource.minEvictableIdleTimeMillis}" />
+    </bean>
+    
+    <!-- 事务管理器 -->
+    <bean id="transactionManager"
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+      <property name="dataSource" ref="dataSource" />
+   </bean>
+
+    <!-- 声明式容器事务管理 ,transaction-manager指定事务管理器为transactionManager -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+        	<tx:method name="add*" propagation="REQUIRED" />
+            <tx:method name="save*" propagation="REQUIRED" />
+            <tx:method name="update*" propagation="REQUIRED" />
+            <tx:method name="delete*" propagation="REQUIRED" />
+            <tx:method name="process*" propagation="REQUIRED" />
+            <tx:method name="*" read-only="true" />
+      	</tx:attributes>
+     </tx:advice>
+      
+    <aop:config expose-proxy="true">
+        <!-- 只对业务逻辑层实施事务 -->
+        <aop:pointcut id="txPointcut" expression="execution(* com.gang.service..*.*(..))" />
+        <!-- Advisor定义，切入点和通知分别为txPointcut、txAdvice -->
+        <aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice"/>
+    </aop:config>
+    
+    <!-- 给 jdbcTemplate 注入 dataSource -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">   
+        <property name="dataSource" ref="dataSource" />   
+    </bean>
+    
+    <!-- 获取Spring Context -->
+  	<bean class="com.gang.utils.SpringContextUtil" id="springContextUtil" />
+  	
+  	<!-- 文件上传 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" >
+    	<property name="defaultEncoding" value="UTF-8" />
+    </bean>
+	
+  	<!-- 异常处理 -->
+	<bean id="exceptionResolver" class="com.gang.controller.ExceptionHandler"/>
+</beans>

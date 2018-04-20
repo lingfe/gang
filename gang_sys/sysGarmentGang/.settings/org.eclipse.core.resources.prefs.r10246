@@ -1,0 +1,24 @@
+#Mon Mar 26 12:46:34 CST 2018
+eclipse.preferences.version=1
+encoding//WebRoot/js/ads_text_save.js=UTF-8
+encoding//WebRoot/js/ajaxfileupload.js=UTF-8
+encoding//WebRoot/js/dmkj-js-lib.js=UTF-8
+encoding//WebRoot/js/goods_text_save.js=UTF-8
+encoding//WebRoot/js/goods_text_update.js=UTF-8
+encoding//WebRoot/js/jquery-1.7.1.min.js=UTF-8
+encoding//WebRoot/js/jquery.lazyload.min.js=UTF-8
+encoding//WebRoot/js/yyy_script.js=UTF-8
+encoding//WebRoot/js/zyxx-js-lib.js=UTF-8
+encoding//WebRoot/lodop/LodopFuncs.js=UTF-8
+encoding//src/com/zyxx/eggs/weixin/pojo/ArticleMaterial.java=UTF-8
+encoding//src/com/zyxx/eggs/weixin/pojo/Template.java=GBK
+encoding//src/com/zyxx/eggs/weixin/pojo/WeixinUserInfo.java=GBK
+encoding//src/com/zyxx/eggs/weixin/pojo/WxPayGroupRedPacket.java=gb2312
+encoding//src/com/zyxx/eggs/weixin/pojo/WxPayOrder.java=gb2312
+encoding//src/com/zyxx/eggs/weixin/pojo/WxPayRedPacket.java=gb2312
+encoding//src/com/zyxx/eggs/weixin/pojo/WxPayRequest.java=gb2312
+encoding//src/com/zyxx/eggs/weixin/pojo/WxPayResult.java=gb2312
+encoding//src/com/zyxx/eggs/weixin/util/WxConfiUtil.java=UTF-8
+encoding//src/com/zyxx/eggs/weixin/util/WxPayUtil.java=gb2312
+encoding//src/com/zyxx/eggs/weixin/util/XMLUtil.java=gb2312
+encoding/<project>=UTF-8

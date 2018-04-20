@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<taglib version="2.0" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+	<tlib-version>1.0</tlib-version>
+	<short-name>zyxxTagLibrary</short-name>
+	<uri>http://zyxx.com/jsp/mytag/core</uri>
+	<tag>
+		<name>permissions</name>
+		<tag-class>com.zyxx.eggs.tag.PermissionTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<name>resourceId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

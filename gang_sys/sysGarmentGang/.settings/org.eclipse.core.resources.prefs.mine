@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding//WebRoot/css/page.css=UTF-8
+encoding//WebRoot/js/yyy_script.js=UTF-8
+encoding//WebRoot/js/zyxx-js-lib.js=UTF-8
+encoding//WebRoot/lodop/LodopFuncs.js=UTF-8
+encoding//src/com/zyxx/eggs/weixin/pojo/ArticleMaterial.java=UTF-8
+encoding//src/com/zyxx/eggs/weixin/pojo/Template.java=GBK
+encoding//src/com/zyxx/eggs/weixin/pojo/WeixinUserInfo.java=GBK
+encoding//src/com/zyxx/eggs/weixin/pojo/WxPayGroupRedPacket.java=gb2312
+encoding//src/com/zyxx/eggs/weixin/pojo/WxPayOrder.java=gb2312
+encoding//src/com/zyxx/eggs/weixin/pojo/WxPayRedPacket.java=gb2312
+encoding//src/com/zyxx/eggs/weixin/pojo/WxPayRequest.java=gb2312
+encoding//src/com/zyxx/eggs/weixin/pojo/WxPayResult.java=gb2312
+encoding//src/com/zyxx/eggs/weixin/util/WxPayUtil.java=gb2312
+encoding//src/com/zyxx/eggs/weixin/util/XMLUtil.java=gb2312
+encoding/<project>=UTF-8

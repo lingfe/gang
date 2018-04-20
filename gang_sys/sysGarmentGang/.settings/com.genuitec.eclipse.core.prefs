@@ -1,0 +1,4 @@
+#Tue Mar 27 09:43:30 CST 2018
+eclipse.preferences.version=1
+validator.Checked=WebRoot/web/mall/user_center.jsp,WebRoot/js,WebRoot/web/admin/dimMemberLevel.jsp,WebRoot/aui,WebRoot/web/mall/footer.jsp,WebRoot/web/mall/products_detailed.jsp,WebRoot/web/mall/help.jsp,WebRoot/web/mall/business_info.jsp,WebRoot/web/mall/personal_center.jsp
+validator.Unchecked=
