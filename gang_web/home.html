@@ -22,12 +22,12 @@
   </head>
   
   <!-- angularJs -->
-  <body  ng-app="myApp" ng-controller="home">
+  <body  ng-app="myApp" ng-controller="home" style="padding-top: 90px;">
 
     <!--  banner图  start -->
     <div class="advertising">
       <a href="javascript:;">
-        <img style="width:100%;float:left;" src="{{imgPath}}images/home/1.jpg" alt="1广告图">
+        <img style="width:100%;height:50px;float:left;" src="{{imgPath}}images/home/1.jpg" alt="1广告图">
       </a>
     </div>
     <div class="banner">
@@ -48,11 +48,11 @@
           <li>
             <label class="con-le" for="name">
               <img src="{{imgPath}}images/home/3.png" alt="3.姓名"></label>
-            <input type="text" ng-model="fullName" value="" id="name" placeholder="输入姓名，预约顾问免费上门量体"></li>
+            <input type="text" required="required" ng-model="fullName" value="" id="name" placeholder="输入姓名，预约顾问免费上门量体"></li>
           <li>
             <label for="tel">
               <img src="{{imgPath}}images/home/4.png" alt="4.电话号码"></label>
-            <input type="tel" ng-model="phone" value="" id="tel" placeholder="输入手机，享受一对一专人服务"></li>
+            <input type="tel" required="required" ng-model="phone" value="" id="tel" placeholder="输入手机，享受一对一专人服务"></li>
           <li class="li_addr">
             <div class="div_addr">
               <label class="con-le" for="addr">

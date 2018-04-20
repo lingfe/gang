@@ -1,8 +1,8 @@
-/* 
+/*
 * @Author: Marte
 * @Date:   2018-04-18 17:43:43
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-04-19 16:30:23
+* @Last Modified time: 2018-04-20 15:14:37
 */
 
 /*angularJs  start */
@@ -44,16 +44,18 @@ app.controller('clothingInofDetailed', function($scope, $http) {
 
 
 /* 设置头  start */
-$(function(){
-    var ah = $('.advertising').height();                             
-    var ch = ah+42;
-    $('body').css('padding-top',ah+'px');
-
+$(function(){ 
 
     var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
         paginationClickable: true,
         loop: false,
     });
+
 })
 /* 设置头  end */   
+
+/* mescroll.js  start */
+$(function(){
+});
+/* mescroll.js  end */

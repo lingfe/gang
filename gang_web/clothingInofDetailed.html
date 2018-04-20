@@ -16,16 +16,16 @@
     <!-- 导入公共资源 -->
     <link rel="stylesheet" href="css/swiper.min.css">
 	<link rel="stylesheet" href="css/clothingInofDetailed.css">
+	<link rel="stylesheet" href="css/mescroll.min.css">
 
   </head>
   
   <!-- angularJs -->
-  <body ng-app="myApp" ng-controller="clothingInofDetailed">
-
+  <body ng-app="myApp" ng-controller="clothingInofDetailed"  style="padding-top: 90px;">
   	<!-- 广告  start -->
     <div class="advertising">
       <a href="javascript:;">
-      	<img style="width:100%;float:left;" src="{{imgPath}}images/public/1.jpg">
+      	<img style="width:100%;height:50px;float:left;" src="{{imgPath}}images/public/1.jpg">
       </a>
     </div>
     <!-- 广告  end -->
@@ -72,17 +72,14 @@
     <div class="bottom">
     	<a class="yuyue" href="home.html" target="ifms">预约美女免费上门量体</a>
     </div>
-
+    
 	<!-- js脚本 -->
     <script src="js/jquery.1.7.2.min.js"></script>
     <script src="js/jquery.lazyload.js"></script>
     <script src="js/wap-head.js"></script>
     <script src="js/swiper.min.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/mescroll.min.js"></script>
     <script type="text/javascript" src="js/clothingInofDetailed.js" ></script>
-    <script>$("img.lazy").lazyload({
-        threshold: 200,
-        placeholder :  "//wxstatic.ybren.com/Public/wap/zhanwei2.png"
-      });</script>
   </body>
 </html>

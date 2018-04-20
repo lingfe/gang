@@ -2,12 +2,10 @@
 * @Author: Marte
 * @Date:   2018-04-17 17:45:33
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-04-17 18:01:38
+* @Last Modified time: 2018-04-20 14:32:59
 */
  @charset "utf-8";
 
-
-             body{margin-top: 43px;}
             .hearder {background-color: #2e2e2e;background-image: -webkit-linear-gradient(top, #2e2e2e,#1b1b1b);background-image: linear-gradient(to bottom,#2e2e2e,#1b1b1b);
                 height: 43px;position: fixed;z-index: 1000;left: 0;right: 0;top: 0;padding-left: 43px;border-bottom: 1px solid #000;text-align: center;}
             .hearder .headimg{width:80px;float: right;height:30px;padding: 7px 0 0 100px;padding-right: 160px;}
@@ -67,7 +65,7 @@
             }   
 
 
-.advertising{position: fixed;top:42px;left: 0;width: 100%;overflow: hidden;z-index: 1000;} .advertising img{float: left;width: 100%;}
+.advertising{position: fixed;top:40px;left: 0;width: 100%;overflow: hidden;z-index: 1000;} .advertising img{float: left;width: 100%;}
 
 .lists{overflow: hidden;background: #f5f6f7;} .lists .tlist{float: left;width:49%;overflow: hidden;padding-bottom:2%;} .lists .tlist:nth-child(odd){margin-right: 2%;} .lists .tlist img{float: left;width: 100%;} .lists .tlist .cur{display: block;} .lists .tlist p {text-align: justify;line-height: 1.6em;padding: 10px 5px;} .lists .tlist li .desc {float: left;width: 100%;background: #ffffff;padding: 0px 10px;box-sizing: border-box;} .lists .tlist .desc .p_title {color: #222222;margin-bottom: 0px;} .lists .tlist .desc p {overflow: hidden;padding: 0;} .lists .tlist .desc .p_title span {font-size: 10px;height: 18px;line-height: 18px;box-sizing: border-box;float: left; overflow: hidden;text-overflow: ellipsis;white-space: nowrap; } .lists .tlist .desc .p_title .name {width: 80%;} .lists .tlist .desc .p_title .coup {font-size: 8px;border: 1px solid #e60039;border-radius: 2px;color: #e60039;padding: 0px 4px;height: 16px;line-height: 14px;text-align: center;float: right; } .lists .tlist .desc .p_desc {color: #005bac;font-size: 10px;margin-bottom: 9px;text-align: left;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;} .lists .tlist .desc font {font-weight: bold;font-size: 14px;color: #262626;float: left;margin-right: 5px;}
 

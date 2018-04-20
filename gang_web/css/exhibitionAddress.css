@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2018-04-19 15:20:13
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-04-19 15:20:53
+* @Last Modified time: 2018-04-20 14:40:01
 */
  @charset "utf-8";
 
@@ -34,7 +34,7 @@
             .content span:nth-child(odd){background: url(bg/bg01.jpg) no-repeat center center;background-size:100%;}
             .content span:nth-child(even){background: url(bg/bg02.jpg) no-repeat center center;background-size:100%;}
             .content span:nth-child(4n){margin-right: 0;}
-            .foot{overflow: hidden;position: fixed;width: 100%;bottom: 0;left: 0;}
+            .foot{overflow: hidden;position: fixed;width: 100%;bottom: 0;left: 0;  z-index: 1000;}
             .foot img{float: left;width: 100%;}
             .tip{overflow: hidden;position: relative;}
             .tip img{float: left;width: 100%;}

@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2018-04-16 17:06:27
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-04-19 15:39:11
+* @Last Modified time: 2018-04-20 14:54:04
 */
 
 /*angularJs  start */
@@ -12,6 +12,17 @@ app.controller('home', function($scope, $http) {
     $scope.imgPath="https://raw.githubusercontent.com/lingfe/gang/master/resource/";
     //立即预约
     $scope.yuyue=function(){
+        //验证
+        if($scope.fullName == null ||$scope.fullName==""){
+            alert("请填写姓名!");
+            return;
+        }else if($scope.phone == null ||$scope.phone==""){
+            alert("请填写电话号码!");
+            return;
+        }else if($scope.address == null ||$scope.address==""){
+            alert("请填写详细地址!");
+            return;
+        }
         //参数
         var datas=[
             'fullName='+$scope.fullName,
@@ -53,15 +64,7 @@ $(window).on('scroll', function () {/*当滚动条的垂直位置大于浏览器
         backButton.fadeOut();  
 });  
 $(window).trigger('scroll');/*触发滚动事件，避免刷新的时候显示回到顶部按钮*/  
-/* 回到顶部 end  */
-
-/* 设置头  start */
-$(function(){
-    var ah = $('.advertising').height();                             
-    var ch = ah+42;
-    $('body').css('padding-top',ch+'px');
-})
-/* 设置头  end */   
+/* 回到顶部 end  */ 
 
 
 /* 地址数据操作  start */

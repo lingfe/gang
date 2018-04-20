@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2018-04-17 17:48:23
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-04-18 17:46:38
+* @Last Modified time: 2018-04-20 12:23:14
 */
 
 /*angularJs  start */
@@ -47,11 +47,3 @@ app.controller('shopInfo', function($scope, $http) {
 });
 /* angularJs  end */
 
-
-/* 设置头  start */
-$(function() {
-        var ah = $('.advertising').height();
-        var ch = ah + 42;
-        $('body').css('padding-top', ah + 'px');
-})
-/* 设置头  end */
