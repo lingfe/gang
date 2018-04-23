@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2018-04-16 16:48:52
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-04-20 14:31:35
+* @Last Modified time: 2018-04-23 10:19:48
 */
  @charset "utf-8";
 
@@ -96,7 +96,8 @@
             }
 
              body{margin-top: 43px;}
-            .hearder {background-color: #2e2e2e;background-image: -webkit-linear-gradient(top, #2e2e2e,#1b1b1b);background-image: linear-gradient(to bottom,#2e2e2e,#1b1b1b);
+            /*.hearder {background-color: #2e2e2e;background-image: -webkit-linear-gradient(top, #2e2e2e,#1b1b1b);background-image: linear-gradient(to bottom,#2e2e2e,#1b1b1b);*/
+            .hearder {background-color: #000;background-image: -webkit-linear-gradient(top, #000,#000);background-image: linear-gradient(to bottom,#000,#000);
                 height: 43px;position: fixed;z-index: 1000;left: 0;right: 0;top: 0;padding-left: 43px;border-bottom: 1px solid #000;text-align: center;}
             .hearder .headimg{width:80px;float: right;height:30px;padding: 7px 0 0 100px;padding-right: 160px;}
             .hearder .tel{position: absolute;top:5px;right:10px;width:28px;height: 24px;}
