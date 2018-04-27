@@ -9,6 +9,14 @@ import java.util.Date;
  */
 public class UserInfo {
 	
+	private Date lastTime;
+	
+	public Date getLastTime() {
+		return lastTime;
+	}
+	public void setLastTime(Date lastTime) {
+		this.lastTime = lastTime;
+	}
 	public String getId() {
 		return id;
 	}

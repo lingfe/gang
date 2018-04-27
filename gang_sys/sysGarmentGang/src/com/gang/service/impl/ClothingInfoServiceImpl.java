@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.gang.dao.ClothingInfoDao;
 import com.gang.entity.ClothingInfo;
+import com.gang.pojo.SelectWhere;
 import com.gang.service.ClothingInfoService;
 
 @Service
@@ -21,8 +22,8 @@ public class ClothingInfoServiceImpl implements ClothingInfoService {
 	}
 
 	@Override
-	public List<ClothingInfo> getClothingInfoWhereId(String id) {
-		return clothingInfoDao.getClothingInfoWhereId(id);
+	public List<ClothingInfo> getClothingInfoWhereId(SelectWhere where,String id) {
+		return clothingInfoDao.getClothingInfoWhereId(where,id);
 	}
 
 

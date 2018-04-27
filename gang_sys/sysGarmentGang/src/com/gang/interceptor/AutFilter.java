@@ -30,7 +30,7 @@ public class AutFilter implements Filter {
 	 * @auth dongk 2018-3-2 15:03:47
 	 * @description 开发阶段,以下部分页面权限为测试需要,后期需统一管理页面权限
 	 */
-	public static String[] allowUrls = {"appint","gang","styleTypeInfo/getInfoList","getInfoList","clothingInfo"};
+	public static String[] allowUrls = {"user/login.action","user/init","appint","styleTypeInfo/getInfoList","getInfoList","clothingInfo"};
 	
 	@Override
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
@@ -57,14 +57,11 @@ public class AutFilter implements Filter {
 				UserInfo userInfo = (UserInfo) session.getAttribute(EggsUserInfoSessionKey.WSC_USERINFO_SESSION);
 				if (null == userInfo) {
 					RequestDispatcher rd = null;
-					if(uri.contains("login/loginSuccess.action")){
-						rd = request.getRequestDispatcher("/login/init.action");
+					if(uri.contains("user/login.action")){
+						rd = request.getRequestDispatcher("/user/init.action");
 					}else{
-					    rd = request.getRequestDispatcher("/index.action");//跳转商城首页
+					    rd = request.getRequestDispatcher("/user/init.action");//后台登陆
 					}
-					// 执行重新登录
-//					RequestDispatcher rd = request.getRequestDispatcher("/login/init.action");
-//					RequestDispatcher rd = request.getRequestDispatcher("/index.action");//跳转商城首页
 					rd.forward(request, response);
 					return;
 				}

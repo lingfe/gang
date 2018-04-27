@@ -41,7 +41,7 @@ public class StyleTypeInfoController {
 	@ResponseBody
 	public List<StyleTypeInfo> getInfoList() {
 		//得到数据
-		List<StyleTypeInfo> st=styleTypeInfoService.getInfoList();
+		List<StyleTypeInfo> st=styleTypeInfoService.getInfoList(null);
 		log.info("得到数据!");
 		return st;
 	}

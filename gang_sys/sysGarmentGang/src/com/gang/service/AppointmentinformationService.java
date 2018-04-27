@@ -1,6 +1,9 @@
 package com.gang.service;
 
+import java.util.List;
+
 import com.gang.entity.Appointmentinformation;
+import com.gang.pojo.SelectWhere;
 
 /**
  * 上门预约，业务逻辑层
@@ -9,6 +12,15 @@ import com.gang.entity.Appointmentinformation;
  *
  */
 public interface AppointmentinformationService {
+	
+	/**
+	 * 分页查询所有预约数据
+	 * @param pageIndex	当前页
+	 * @param pageNum	页容量
+	 * @author 13068	lingfe
+	 * @return 数据集合
+	 */
+	public List<Appointmentinformation> getInfoList(SelectWhere where,Integer pageIndex,Integer pageNum);
 
 	/**
 	 * 添加一条上门预约信息

@@ -3,6 +3,7 @@ package com.gang.service;
 import java.util.List;
 
 import com.gang.entity.ClothingInfo;
+import com.gang.pojo.SelectWhere;
 
 /**
  * 服装信息，业务逻辑层
@@ -17,7 +18,7 @@ public interface ClothingInfoService {
 	 * @author lingfe
 	 * @return 数据集合
 	 */
-	public List<ClothingInfo> getClothingInfoWhereId(String id);
+	public List<ClothingInfo> getClothingInfoWhereId(SelectWhere where,String id);
 
 	/**
 	 * 根据服装款式类型查询服装信息
