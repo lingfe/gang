@@ -56,7 +56,7 @@ public class LogDaoImpl implements LogDao {
 	@Override
 	public List<SysLog> getSysLogList(SelectWhere where,Integer pageIndex, Integer pageNum) {
 		StringBuffer sql=new StringBuffer();
-		sql.append("select * from sysLog ");
+		sql.append("select * from syslog ");
 		//验证条件非空
 		if(where.getEndTime()!=null&&where.getStartTime()!=null){
 			sql.append(" where ");
@@ -77,7 +77,7 @@ public class LogDaoImpl implements LogDao {
 	@Override
 	public List<AccessLog> getAccessLogList(SelectWhere where,Integer pageIndex, Integer pageNum) {
 		StringBuffer sql=new StringBuffer();
-		sql.append("select * from AccessLog ");
+		sql.append("select * from accesslog ");
 		//验证条件非空
 		if(where.getEndTime()!=null&&where.getStartTime()!=null){
 			sql.append(" where ");

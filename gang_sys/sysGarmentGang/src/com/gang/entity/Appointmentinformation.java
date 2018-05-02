@@ -2,6 +2,8 @@ package com.gang.entity;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * 预约上门信息表
  * @author lingfe
@@ -81,7 +83,9 @@ public class Appointmentinformation {
 	private String region;//|	  `region` VARCHAR(32) NOT NULL COMMENT '地区',
 	private String address;//	  `address` VARCHAR(64) NOT NULL COMMENT '详细地址',
 	private Integer state;//	  `state` INT(11) DEFAULT '0' COMMENT '状态,0..',
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date cdate;//	  `cdate` DATETIME DEFAULT NULL COMMENT '创建时间',
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date mdate;//	  `mdate` DATETIME DEFAULT NULL COMMENT '最后修改时间',
 	private String creator;//	  `creator` VARCHAR(64) DEFAULT NULL COMMENT '创建人',
 	private String modify;//	  `modify` VARCHAR(64) DEFAULT NULL COMMENT '修改人',

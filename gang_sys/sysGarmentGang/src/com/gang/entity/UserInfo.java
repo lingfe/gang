@@ -2,6 +2,8 @@ package com.gang.entity;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * 用户表
  * @author lingfe
@@ -215,7 +217,9 @@ public class UserInfo {
 	private String regionName;//	  `regionName` VARCHAR(64) DEFAULT NULL COMMENT '区',
 	private String address;//	  `address` VARCHAR(256) DEFAULT NULL COMMENT '详细地址',
 	private String remark;//|	  `remark` VARCHAR(64) DEFAULT NULL COMMENT '备注',
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date cdate;//	  `cdate` DATETIME DEFAULT NULL COMMENT '创建时间',
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date mdate;//	  `mdate` DATETIME DEFAULT NULL COMMENT '最后修改时间',
 	private String creator;//	  `creator` VARCHAR(64) DEFAULT NULL COMMENT '创建人',
 	private String modify;//	  `modify` VARCHAR(64) DEFAULT NULL COMMENT '修改人',

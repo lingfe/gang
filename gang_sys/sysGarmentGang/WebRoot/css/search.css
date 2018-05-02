@@ -80,6 +80,12 @@
 .update{
 	background-color: black;
 }
+.cancel{
+	background-color:#990099;
+}
+.add {
+	background-color:#660099;
+}
 /*操作按钮 start*/
 
 /* 时间条件	start */

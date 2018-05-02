@@ -41,11 +41,26 @@ qikoo.dialog = function() {
     }), i.find(".console-btn-cancel").click(function() {
         n && n.call(i), qikoo.dialog.hide()
     }), i
+},qikoo.dialog.gettext = function(e, t, n) {
+    var r = ['<div class="dialog-content">', "<p>" + e + "</p>", "</div>", "<input placeholder='请输入 ' type='text' id='qikoo_text'/>",'<div class="dialog-console clearfix_new">', '<a class="console-btn-confirm" href="#" onclick="return false;">确定</a>', '<a class="console-btn-cancel" href="#" onclick="return false;">取消</a>', "</div>"].join(""),
+    i = qikoo.dialog.show({
+        html: r
+    });
+   
+	return i.find(".console-btn-confirm").click(function() {
+		//得到文本框的值
+		var txt=i.find("#qikoo_text").val();
+		
+	    var e = t && t.call(i,txt);
+	    e !== !1 && qikoo.dialog.hide()
+	}), i.find(".console-btn-cancel").click(function() {
+	    n && n.call(i), qikoo.dialog.hide()
+	}), i
 }, qikoo.dialog.alert = function(e, t) {
     var n = ['<div class="dialog-content">', "<p>" + e + "</p>", "</div>", '<div class="dialog-console clearfix_new">', '<a class="console-btn-confirm" href="#" onclick="return false;">确定</a>', "</div>"].join(""),
         r = qikoo.dialog.show({
             html: n
-        });
+       });
     return r.find(".console-btn-confirm").click(function() {
         var e = t && t.call(r);
         e !== !1 && qikoo.dialog.hide()

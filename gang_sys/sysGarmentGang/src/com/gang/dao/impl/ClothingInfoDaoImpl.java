@@ -16,11 +16,44 @@ public class ClothingInfoDaoImpl implements ClothingInfoDao {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	@Override
+	public int updateIsDisplay(String id, String isDisplay) {
+		String sql="update clothinginfo set isDisplay=? where id=?";
+		return jdbcTemplate.update(sql, new Object[] { isDisplay,id});
+	}
+	
+	@Override
+	public int deleteWhereId(String id) {
+		String sql="delete from clothinginfo where id=?";
+		return jdbcTemplate.update(sql, new Object[] { id});
+	}
+	
+	@Override
+	public int addClothingInfo(ClothingInfo info) {
+		String sql="INSERT  INTO `clothinginfo`"
+				+ "(`id`,`styletypeinfoId`,`styleName`,`clothingName`,"
+				+ "`lable`,`material`,`salesPrice`,`tagPrice`,"
+				+ "`imgCover`,`imgArray`,`infoImgArray`,"
+				+ "`isDisplay`,`remark`,"
+				+ "`state`,`cdate`,`mdate`,`creator`,`modify`,`version`) "
+				+ "VALUES "
+				+ "(?,?,?,?,"
+				+ "?,?,?,?,"
+				+ "?,?,?,"
+				+ "?,?,"
+				+ "?,?,?,?,?,?)";
+		return jdbcTemplate.update(sql, new Object[] { info.getId(),info.getStyleTypeInfoId(),info.getStyleName(),info.getClothingName(),
+				info.getLable(),info.getMaterial(),info.getSalesPrice(),info.getTagPrice(),
+				info.getImgCover(),info.getImgArray(),info.getInfoImgArray(),
+				info.getIsDisplay(),info.getRemark(),
+				info.getState(),info.getCdate(),info.getMdate(),info.getCreator(),info.getModify(),info.getVersion()});
+	}
 
 	@Override
 	public List<ClothingInfo> getClothingInfoWhereId(SelectWhere where,String id) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("select * from clothingInfo where 1=1 ");
+		sql.append("select * from clothinginfo where 1=1 ");
 		//验证条件非空
 		if(where.getSearchKey()!=null&&!"".equals(where.getSearchKey())){
 			sql.append(" and id LIKE '%").append(where.getSearchKey()).append("%'");
@@ -36,7 +69,11 @@ public class ClothingInfoDaoImpl implements ClothingInfoDao {
 		}
 		//条件
 		if(id!=null){
-			sql.append(" where id = '").append(id).append("' ");
+			sql.append(" and id = '").append(id).append("' ");
+		}
+		//排序
+		if(true) {
+			sql.append(" order by  mdate desc ");
 		}
 		//条件追加,分页查询
 		if(where != null){
@@ -50,7 +87,7 @@ public class ClothingInfoDaoImpl implements ClothingInfoDao {
 	@Override
 	public List<ClothingInfo> getClothingInfoList(String styletypeinfoId, String styleName) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("select * from clothingInfo where isDisplay='是' ");
+		sql.append("select * from clothinginfo where isDisplay='是' ");
 		//条件
 		if(styletypeinfoId!=null){
 			sql.append(" and styletypeinfoId = '").append(styletypeinfoId).append("' ");

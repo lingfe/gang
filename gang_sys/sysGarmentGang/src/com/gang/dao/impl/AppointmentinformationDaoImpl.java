@@ -36,7 +36,7 @@ public class AppointmentinformationDaoImpl implements AppointmentinformationDao 
 		}
 		
 		//排序
-		sql.append(" ORDER BY cdate DESC ");
+		sql.append(" ORDER BY mdate DESC ");
 		
 		//条件追加,分页查询
 		if(pageIndex !=null && pageNum!=null){
@@ -56,6 +56,12 @@ public class AppointmentinformationDaoImpl implements AppointmentinformationDao 
 				+ "?,?,?,?,?,?)";
 		return jdbcTemplate.update(sql, new Object[] { info.getId(),info.getFullName(),info.getPhone(),info.getRegion(),info.getAddress(),
 				info.getState(),info.getCdate(),info.getMdate(),info.getCreator(),info.getModify(),info.getVersion()});
+	}
+
+	@Override
+	public int deleteWhereId(String id) {
+		String sql="delete from appointmentinformation where id=?";
+		return jdbcTemplate.update(sql, new Object[] { id});
 	}
 
 }

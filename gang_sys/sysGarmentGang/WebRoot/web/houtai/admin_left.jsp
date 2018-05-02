@@ -65,14 +65,8 @@
 			</div>
 			<ul class="menuson">
 
-				<li><cite></cite><a href="<%=basePath %>manage/clothingInfoManage.action"
+				<li><cite></cite><a href="<%=basePath %>manage/clothingInfoManage.action?rows=1"
 					target="rightFrame">服装信息管理</a><i></i></li>
-
-				<li><cite></cite><a href="/admin/alreadypaylist"
-					target="rightFrame">已缴记录</a><i></i></li>
-	
-				<li><cite></cite><a href="admin_nohavepaylist.html"
-					target="rightFrame">未缴记录</a><i></i></li>
 			</ul>
 		</dd>
 		<dd>

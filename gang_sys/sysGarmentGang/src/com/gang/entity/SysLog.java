@@ -2,6 +2,8 @@ package com.gang.entity;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * 系统日志表
  * @author 13068	lingfe
@@ -88,7 +90,9 @@ public class SysLog {
 	private String operationType;//	operationType TEXT DEFAULT NULL COMMENT '操作类型',
 	private String abnormal;//	abnormal TEXT DEFAULT NULL COMMENT '异常',
 	private Integer state;//	  `state` INT(11) DEFAULT '0' COMMENT '状态,0..',
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date cdate;//	  `cdate` DATETIME DEFAULT NULL COMMENT '创建时间',
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date mdate;//	  `mdate` DATETIME DEFAULT NULL COMMENT '最后修改时间',
 	private String creator;//	  `creator` VARCHAR(64) DEFAULT NULL COMMENT '创建人',
 	private String modify;//	  `modify` VARCHAR(64) DEFAULT NULL COMMENT '修改人',

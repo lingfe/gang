@@ -2,6 +2,8 @@ package com.gang.entity;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * 服装信息表
  * @author lingfe
@@ -151,7 +153,9 @@ public class ClothingInfo {
 	private String infoImgArray;//	  `infoImgArray` TEXT COMMENT '服装信息详细图',
 	private String isDisplay;//`isDisplay` VARCHAR(32) DEFAULT '是' COMMENT '是否显示',
 	private Integer state;//	  `state` INT(11) DEFAULT '0' COMMENT '状态,0..',
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date cdate;//	  `cdate` DATETIME DEFAULT NULL COMMENT '创建时间',
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date mdate;//	  `mdate` DATETIME DEFAULT NULL COMMENT '最后修改时间',
 	private String creator;//	  `creator` VARCHAR(64) DEFAULT NULL COMMENT '创建人',
 	private String modify;//	  `modify` VARCHAR(64) DEFAULT NULL COMMENT '修改人',

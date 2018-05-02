@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Component
 public class ExceptionHandler implements HandlerExceptionResolver {
 
+	@Override
 	public ModelAndView resolveException(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, Exception arg3) {
 		return new ModelAndView("error");
 	}

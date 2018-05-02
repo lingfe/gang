@@ -865,7 +865,7 @@ public class DateUtil {
 	 */
 	public static Date addDay(Date d, int day) {
 		Date newD = new Date(d.getTime());
-		newD.setTime(newD.getTime() + (long) day * 86400000L);
+		newD.setTime(newD.getTime() + day * 86400000L);
 		return newD;
 	}
 
@@ -924,7 +924,7 @@ public class DateUtil {
 	 */
 	public static Date addHour(Date d, int hour) {
 		Date newD = new Date(d.getTime());
-		newD.setTime(newD.getTime() + (long) hour * 3600000L);
+		newD.setTime(newD.getTime() + hour * 3600000L);
 		return newD;
 	}
 
@@ -951,7 +951,7 @@ public class DateUtil {
 	 */
 	public static Date addMinute(Date d, int minute) {
 		Date newD = new Date(d.getTime());
-		newD.setTime(newD.getTime() + (long) minute * 60000L);
+		newD.setTime(newD.getTime() + minute * 60000L);
 		return newD;
 	}
 
@@ -978,7 +978,7 @@ public class DateUtil {
 	 */
 	public static Date addSecond(Date d, int second) {
 		Date newD = new Date(d.getTime());
-		newD.setTime(newD.getTime() + (long) second * 1000L);
+		newD.setTime(newD.getTime() + second * 1000L);
 		return newD;
 	}
 
@@ -991,7 +991,7 @@ public class DateUtil {
 	 */
 	public static Date addMinSecond(Date d, int minSecond) {
 		Date newD = new Date(d.getTime());
-		newD.setTime(newD.getTime() + (long) minSecond * 1L);
+		newD.setTime(newD.getTime() + minSecond * 1L);
 		return newD;
 	}
 

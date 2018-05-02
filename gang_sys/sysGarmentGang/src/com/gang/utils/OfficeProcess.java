@@ -114,7 +114,7 @@ public class OfficeProcess {
 					HSSFClientAnchor anchor = new HSSFClientAnchor(dx1, dy1, dx2, dy2, col1, row1, col2, row2);
 					anchor.setAnchorType(3);
 					// 插入图片
-					patriarch.createPicture(anchor, wb.addPicture(byteArrayOut.toByteArray(), HSSFWorkbook.PICTURE_TYPE_JPEG));
+					patriarch.createPicture(anchor, wb.addPicture(byteArrayOut.toByteArray(), org.apache.poi.ss.usermodel.Workbook.PICTURE_TYPE_JPEG));
 					fileOut = new FileOutputStream(excelFilePath);
 					// 写入excel文件
 					wb.write(fileOut);

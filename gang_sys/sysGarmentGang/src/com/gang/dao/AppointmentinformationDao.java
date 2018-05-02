@@ -12,6 +12,14 @@ import com.gang.pojo.SelectWhere;
  *
  */
 public interface AppointmentinformationDao {
+	
+	/**
+	 * 根据id删除
+	 * @param id	id主键
+	 * @author 13068	lingfe
+	 * @return	结果
+	 */
+	public int deleteWhereId(String id);
 
 	/**
 	 * 分页查询所有预约数据

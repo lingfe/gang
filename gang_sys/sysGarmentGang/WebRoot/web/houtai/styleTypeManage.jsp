@@ -53,14 +53,16 @@
 			<input type="date" name="endTime"
 				class="Wdate ipt share-input-style end_date_input" /> 
 				<input	type="submit" class="share-button-style" value="查 询" />
-				<input	type="button" class="share-button-style" value="添加" />
+				<input	type="button" 
+				onclick="javascript:PAYFEES.add_style_html(this,${pageInfo.pageNum },${pageInfo.pageSize },'${wscSession.userName }');" 
+				class="cz_button add" value="添加" />
 		</div>
 	</form>
 	<!-- 查询条件 end -->
 	
 	<!-- 数据   start  -->
 	<div class="rightinfo">
-		<table class="tablelist">
+		<table class="tablelist" id="tab_list">
 			<thead>
 				<tr>
 					<th style="width: 10%;" nowrap="nowrap">编号</th>
@@ -70,30 +72,34 @@
 					<th style="width: 10%;" nowrap="nowrap">创建时间</th>
 					<th style="width: 10%;" nowrap="nowrap">修改时间</th>
 					<th style="width: 3%;" nowrap="nowrap">状态</th>
+					<th style="width: 3%;" nowrap="nowrap">版本</th>
 					<th style="width: 13%;">操作</th>
 				</tr>
 			</thead>
 			<tbody>
+				<div id="add_style_html"></div>
 				<c:if test="${styleTypeInfoList==null||styleTypeInfoList == '[]' }">
 					<tr>
-						<td colspan="7" align="center" style="color:#5AB8EF;">没有查询到数据！</td>
+						<td colspan="9" align="center" style="color:#5AB8EF;">没有查询到数据！</td>
 					</tr>
 				</c:if>
 				<c:forEach items="${styleTypeInfoList }" var="st">
 					<form action="manage/styleTypeManage.action" method="post" id="form_update${st.id }">
 					<input type="hidden" name="pageIndex" value="${pageInfo.pageNum }">
 					<input type="hidden" name="pageNum" value="${pageInfo.pageSize }">
-					<input type="hidden" name="param" value="">
+					<input type="hidden" name="param" id="param${st.id }" value="">
 					<input type="hidden" name="creator" value="${st.creator }">
 					<input type="hidden" name="modify" value="${wscSession.userName }">
 					<input type="hidden" name="version" value="${st.version }">
+					<input type="hidden" name="cdate" value="${st.cdate }">
+					<input type="hidden" name="mdate" value="${st.mdate }">
 					<table class="tablelist" >
 					<tr>
 						<td style="width: 10%;"><input type="text" class="input_text" name="id" readonly="readonly" value="${st.id }"/></td>
 						<td style="width: 10%;"><input type="text" class="input_text" name="styleName" value="${st.styleName }"/></td>
 						<td style="width: 10%;"><input type="text" class="input_text" name="superiorId" value="${st.superiorId }"/></td>
 						<td style="width: 6%;">
-							<input type="hidden" name="isDisplay" value="${st.isDisplay}">
+							<input type="hidden" name="isDisplay" id="isDisplay${st.id }" value="${st.isDisplay}">
 							<c:if test="${st.isDisplay=='否' }">
 								<input onclick="javascript:PAYFEES.from_isDisplay(this,'${st.id }');" type="button" class="cz_button is_none" value="隐藏中" />
 							</c:if>
@@ -104,6 +110,7 @@
 						<td style="width: 10%;"><input type="text" class="input_text" readonly="readonly" value="${st.cdate }"/></td>
 						<td style="width: 10%;"><input type="text" class="input_text" readonly="readonly" value="${st.mdate }"/></td>
 						<td style="width: 3%;"><input type="number" class="input_text" name="state" value="${st.state }"/></td>
+						<td style="width: 3%;"><input type="text" class="input_text" readonly="readonly" value="${st.version }"/></td>
 						<td style="width: 13%;">
 							<input type="button" onclick="javascript:PAYFEES.from_update('${st.id }');" class="cz_button update" value="保存" />
 							<input type="button" onclick="javascript:PAYFEES.from_delete('${st.id }');" class="cz_button delete" value="删除" />

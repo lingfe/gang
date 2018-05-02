@@ -6,7 +6,7 @@
 			+ path + "/";
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML>
 <html>
 <head>
 <base href="<%=basePath%>">
@@ -15,14 +15,13 @@
 <!-- css 资源 -->
 <link type="text/css" rel="stylesheet" href="css/page.css">
 <link type="text/css" rel="stylesheet" href="css/search.css" />
+<link type="text/css" rel="stylesheet" href="css/qikoo.css" />
 
 <!-- js 脚本 -->
 <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
-<script type="text/javascript" src="js/jquery.loadmask.js"></script>
-<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/page.js" ></script>
+<script type="text/javascript" src="js/qikoo.js" ></script>
 <script type="text/javascript" src="js/payfeelist.js"></script>
-<script type="text/javascript" src="js/wdatepicker.js"></script>
-<script src="js/page.js" type="text/javascript"></script>
 
 </head>
 
@@ -60,16 +59,19 @@
 
 	<!-- 数据  start -->
 	<div class="rightinfo">
-		<table class="tablelist">
+		<table class="tablelist" id="tab_list">
 			<thead>
 				<tr>
 					<th style="width: 10%;" nowrap="nowrap">编号</th>
-					<th style="width: 10%;" nowrap="nowrap">姓名</th>
-					<th style="width: 10%;" nowrap="nowrap">电话号码</th>
+					<th style="width: 6%;" nowrap="nowrap">姓名</th>
+					<th style="width: 6%;" nowrap="nowrap">电话号码</th>
 					<th style="width: 10%;" nowrap="nowrap">地区</th>
 					<th style="width: 10%;" nowrap="nowrap">信息地址</th>
-					<th style="width: 10%;" nowrap="nowrap">时间</th>
-					<th style="width: 10%;" nowrap="nowrap">状态</th>
+					<th style="width: 10%;" nowrap="nowrap">创建时间</th>
+					<th style="width: 10%;" nowrap="nowrap">修改时间</th>
+					<th style="width: 3%;" nowrap="nowrap">状态</th>
+					<th style="width: 3%;" nowrap="nowrap">版本</th>
+					<th style="width: 10%;" nowrap="nowrap">操作</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -79,15 +81,33 @@
 					</tr>
 				</c:if>
 				<c:forEach items="${appointList }" var="st">
+				<form action="manage/appointManage.action" method="post" id="form_update${st.id }">
+					<input type="hidden" name="pageIndex" value="${pageInfo.pageNum }">
+					<input type="hidden" name="pageNum" value="${pageInfo.pageSize }">
+					<input type="hidden" name="param" id="param${st.id }" value="">
+					<input type="hidden" name="creator" value="${st.creator }">
+					<input type="hidden" name="modify" value="${wscSession.userName }">
+					<input type="hidden" name="version" value="${st.version }">
+					<input type="hidden" name="cdate" value="${st.cdate }">
+					<input type="hidden" name="mdate" value="${st.mdate }">
+					<table class="tablelist" >
 					<tr>
-						<td>${st.id }</td>
-						<td>${st.fullName }</td>
-						<td>${st.phone }</td>
-						<td>${st.region }</td>
-						<td>${st.address }</td>
-						<td>${st.cdate }</td>
-						<td>${st.state }</td>
+						<td style="width: 10%;"><input type="text" class="input_text" name="id" readonly="readonly" value="${st.id }"/></td>
+						<td style="width: 6%;"><input type="text" class="input_text" name="fullName" value="${st.fullName }"/></td>
+						<td style="width: 6%;"><input type="text" class="input_text" name="phone" value="${st.phone }"/></td>
+						<td style="width: 10%;"><input type="text" class="input_text" name="region" value="${st.region }"/></td>
+						<td style="width: 10%;"><input type="text" class="input_text" name="address" value="${st.address }"/></td>
+						<td style="width: 10%;"><input type="text" class="input_text" readonly="readonly" value="${st.cdate }"/></td>
+						<td style="width: 10%;"><input type="text" class="input_text" readonly="readonly" value="${st.mdate }"/></td>
+						<td style="width: 3%;"><input type="number" name="state" class="input_text" value="${st.state }"/></td>
+						<td style="width: 3%;"><input type="text" class="input_text" readonly="readonly" value="${st.version }"/></td>
+						<td style="width: 10%;">
+							<input type="button" onclick="javascript:PAYFEES.from_update('${st.id }');" class="cz_button update" value="保存" />
+							<input type="button" onclick="javascript:PAYFEES.from_delete('${st.id }');" class="cz_button delete" value="删除" />
+						</td>
 					</tr>
+					</table>
+				</form>
 				</c:forEach>
 			</tbody>
 		</table>

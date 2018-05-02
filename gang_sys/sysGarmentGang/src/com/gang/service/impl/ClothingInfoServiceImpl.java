@@ -26,5 +26,20 @@ public class ClothingInfoServiceImpl implements ClothingInfoService {
 		return clothingInfoDao.getClothingInfoWhereId(where,id);
 	}
 
+	@Override
+	public int addClothingInfo(ClothingInfo info) {
+		return clothingInfoDao.addClothingInfo(info);
+	}
+
+	@Override
+	public int updateIsDisplay(String id, String isDisplay) {
+		return clothingInfoDao.updateIsDisplay(id, isDisplay);
+	}
+
+	@Override
+	public int deleteWhereId(String id) {
+		return clothingInfoDao.deleteWhereId(id);
+	}
+
 
 }

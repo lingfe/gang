@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -186,6 +187,7 @@ public class MianManageController {
 			@RequestParam(value="page",defaultValue="1") int page,
 			@RequestParam(value="rows",defaultValue="10") int rows, 
 			SelectWhere where,
+			Appointmentinformation appoint,
 			HttpSession session, HttpServletRequest request) {
 		
 		//系统日志记录
@@ -193,8 +195,30 @@ public class MianManageController {
 		sysLog.setCreator("管理员");
 		sysLog.setModel("/appointManage");
 		sysLog.setUserName("管理员");
+		sysLog.setOperationType("查询");
 		try {
 			ModelAndView mav=new ModelAndView("houtai/appointManage");
+			//判断要操作的类型
+			if(where.getParam() !=null &&!"".equals(where.getParam())){
+				if(where.getParam().equals("delete")){
+					//执行删除
+					sysLog.setOperationType("删除");
+					appointmentinformationService.deleteWhereId(appoint.getId());
+				}else if(where.getParam().equals("update")){
+					//修改
+					//先删除原来的数据，保留id
+					int tt=appointmentinformationService.deleteWhereId(appoint.getId());
+					if(tt>=1){
+						//然后，再重新添加以达到修改的修改
+						//赋值
+						appoint.setMdate(new Date());
+						Integer version=Integer.parseInt(appoint.getVersion())+1;
+						appoint.setVersion(version.toString());
+						sysLog.setOperationType("修改");
+						appointmentinformationService.add(appoint);
+					}
+				}
+			}
 			//获取数据
 			List<Appointmentinformation> appointList=appointmentinformationService.getInfoList(where,page, rows);
 			mav.addObject("appointList", appointList);
@@ -213,7 +237,6 @@ public class MianManageController {
 			//log
 			sysLog.setIp(GetIpUtil.getIpAddr(request));
 			sysLog.setAbnormal("无");
-			sysLog.setOperationType("查询");
 			
 			return mav;
 		} catch (Exception e) {
@@ -240,6 +263,7 @@ public class MianManageController {
 			@RequestParam(value="page",defaultValue="1") int page,
 			@RequestParam(value="rows",defaultValue="10") int rows,
 			SelectWhere where,
+			ClothingInfo clo,
 			HttpSession session,HttpServletRequest request){
 		
 		//系统日志记录
@@ -247,10 +271,50 @@ public class MianManageController {
 		sysLog.setCreator("管理员");
 		sysLog.setModel("/clothingInfoManage");
 		sysLog.setUserName("管理员");
+		sysLog.setOperationType("查询");
 		try {
 			ModelAndView mav=new ModelAndView("houtai/clothingInfoManage");
 			where.setPageIndex(page);
 			where.setPageNum(rows);
+			//验证要操作的类型
+			if(where.getParam()!=null&&!"".equals(where.getParam())){
+				if(where.getParam().equals("delete")){
+					//执行删除
+					sysLog.setOperationType("delete");
+					clothingInfoService.deleteWhereId(clo.getId());
+				}else if(where.getParam().equals("update")){
+					//执行修改
+					sysLog.setOperationType("update");
+					//先删除原来的数据，保留id
+					int tt=clothingInfoService.deleteWhereId(clo.getId());
+					if(tt>=1){
+						//再执行添加，以达到修改的效果
+						//赋值
+						clo.setMdate(new Date());
+						Integer version=Integer.parseInt(clo.getVersion())+1;
+						clo.setVersion(version.toString());
+						
+						clothingInfoService.addClothingInfo(clo);
+					}
+				}else if(where.getParam().equals("isDisplay")){
+					//执行修改为隐藏或显示
+					sysLog.setOperationType("isDisplay");
+					clothingInfoService.updateIsDisplay(clo.getId(), clo.getIsDisplay());
+				}else if(where.getParam().equals("add")){
+					//执行添加
+					sysLog.setOperationType("add");
+					//赋值
+					clo.setCdate(new Date());
+					clo.setState(0);
+					clo.setCreator("admin");
+					clo.setMaterial("admin");
+					clo.setId(UUID.randomUUID().toString());
+					
+					clo.setMdate(new Date());
+					clo.setVersion("0");
+					clothingInfoService.addClothingInfo(clo);
+				}
+			}
 			//获取数据
 			List<ClothingInfo> clothingInfoList= clothingInfoService.getClothingInfoWhereId(where,null);
 			mav.addObject("clothingInfoList", clothingInfoList);
@@ -268,7 +332,6 @@ public class MianManageController {
 			//log
 			sysLog.setIp(GetIpUtil.getIpAddr(request));
 			sysLog.setAbnormal("无");
-			sysLog.setOperationType("查询");
 			
 			return mav;
 		} catch (Exception e) {
@@ -331,6 +394,16 @@ public class MianManageController {
 					//执行隐藏或显示
 					sysLog.setOperationType("隐藏或显示");
 					styleTypeInfoService.updateIsDisplay(style.getId(), style.getIsDisplay());
+				}else if(where.getParam().equals("add")){
+					//执行添加
+					sysLog.setOperationType("添加");
+					//赋值
+					style.setId(UUID.randomUUID().toString());
+					style.setCdate(new Date());
+					style.setMdate(new Date());
+					style.setVersion("0");
+					
+					styleTypeInfoService.addStyleInfo(style);
 				}
 			}
 			

@@ -17,6 +17,11 @@ public class AppointmentinformationServiceImpl implements Appointmentinformation
 	private AppointmentinformationDao appointmentinformationDao;
 	
 	@Override
+	public int deleteWhereId(String id) {
+		return appointmentinformationDao.deleteWhereId(id);
+	}
+	
+	@Override
 	public int add(Appointmentinformation info) {
 		return appointmentinformationDao.add(info);
 	}
