@@ -11,6 +11,15 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 public class Appointmentinformation {
 	
+	private String yqPhone;//邀请人电话号码
+	
+	public String getYqPhone() {
+		return yqPhone;
+	}
+	public void setYqPhone(String yqPhone) {
+		this.yqPhone = yqPhone;
+	}
+	
 	public String getId() {
 		return id;
 	}

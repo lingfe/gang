@@ -224,5 +224,7 @@ public class UserInfo {
 	private String creator;//	  `creator` VARCHAR(64) DEFAULT NULL COMMENT '创建人',
 	private String modify;//	  `modify` VARCHAR(64) DEFAULT NULL COMMENT '修改人',
 	private String version;//	  `version` VARCHAR(64) DEFAULT '0' COMMENT '数据版本',
+	public String msg;
+	public int status;
 
 }

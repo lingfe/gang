@@ -1,8 +1,13 @@
 package com.gang.controller;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.gang.entity.AccessLog;
 import com.gang.entity.ClothingInfo;
@@ -39,6 +46,63 @@ public class ClothingInfoController {
 	
 	@Autowired
 	private ClothingInfoService clothingInfoService;
+	
+	/**
+	 * 服装信息管理
+	 * @param page	当前页
+	 * @param rows	页容量
+	 * @param session	会话
+	 * @param request	请求
+	 * @author 13068	lingfe
+	 * @return 数据
+	 */
+	@RequestMapping(value="/getClothingInfoAll",method={RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public List<ClothingInfo> getClothingInfoAll(
+			@RequestParam(value="page",defaultValue="1") int page,
+			@RequestParam(value="rows",defaultValue="10") int rows,
+			SelectWhere where,
+			HttpSession session,HttpServletRequest request){
+		
+		//系统日志记录
+		SysLog sysLog=new SysLog();
+		sysLog.setCreator("游客");
+		sysLog.setModel("/clothingInfoManage");
+		sysLog.setUserName("游客");
+		sysLog.setOperationType("查询");
+		try {
+			ModelAndView mav=new ModelAndView("houtai/clothingInfoManage");
+			where.setPageIndex(page);
+			where.setPageNum(rows);
+			
+			//获取数据
+			List<ClothingInfo> clothingInfoList= clothingInfoService.getClothingInfoWhereId(where,null);
+			mav.addObject("clothingInfoList", clothingInfoList);
+			if(clothingInfoList.size()!=0||clothingInfoList!=null){
+				//得到总数据量
+			    int total=clothingInfoService.getClothingInfoWhereId(new SelectWhere(), null).size();
+			    
+				//返回相关分页参数
+				Map<String, Object> pageInfo = new HashMap<String, Object>();
+				pageInfo.put("pageSize", rows); 
+				pageInfo.put("pageNum", page); 
+				pageInfo.put("total", total); 
+				mav.addObject("pageInfo", pageInfo);
+			}
+			//log
+			sysLog.setIp(GetIpUtil.getIpAddr(request));
+			sysLog.setAbnormal("无");
+			
+			return clothingInfoList;
+		} catch (Exception e) {
+			sysLog.setAbnormal(e.getMessage());
+			e.printStackTrace();
+		}finally {
+			logService.addSysLog(sysLog);
+		}
+		
+		return null;
+	}
 	
 	/**
 	 * 根据id得到服装信息

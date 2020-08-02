@@ -30,7 +30,7 @@ public class AutFilter implements Filter {
 	 * @auth dongk 2018-3-2 15:03:47
 	 * @description 开发阶段,以下部分页面权限为测试需要,后期需统一管理页面权限
 	 */
-	public static String[] allowUrls = {"user/login.action","user/init","appint","styleTypeInfo/getInfoList","getInfoList","clothingInfo"};
+	public static String[] allowUrls = {"user/loginApp","user/registerApp","manage/openid","user/login.action","user/init","appint","styleTypeInfo/getInfoList","getInfoList","clothingInfo"};
 	
 	@Override
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {

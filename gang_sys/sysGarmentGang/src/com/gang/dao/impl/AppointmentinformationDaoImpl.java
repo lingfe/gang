@@ -50,11 +50,11 @@ public class AppointmentinformationDaoImpl implements AppointmentinformationDao 
 	@Override
 	public int add(Appointmentinformation info) {
 		String sql = "INSERT  INTO `appointmentinformation`"
-				+ "(`id`,`fullName`,`phone`,`region`,`address`,"
+				+ "(`id`,`fullName`,`phone`,`region`,`address`,yqPhone,"
 				+ "`state`,`cdate`,`mdate`,`creator`,`modify`,`version`) "
-				+ " values (?,?,?,?,?,"
+				+ " values (?,?,?,?,?,?,"
 				+ "?,?,?,?,?,?)";
-		return jdbcTemplate.update(sql, new Object[] { info.getId(),info.getFullName(),info.getPhone(),info.getRegion(),info.getAddress(),
+		return jdbcTemplate.update(sql, new Object[] { info.getId(),info.getFullName(),info.getPhone(),info.getRegion(),info.getAddress(),info.getYqPhone(),
 				info.getState(),info.getCdate(),info.getMdate(),info.getCreator(),info.getModify(),info.getVersion()});
 	}
 

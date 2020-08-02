@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2018-04-16 17:06:27
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-04-20 14:54:04
+* @Last Modified time: 2018-05-11 18:23:33
 */
 
 /*angularJs  start */
@@ -28,7 +28,8 @@ app.controller('home', function($scope, $http) {
             'fullName='+$scope.fullName,
             'phone='+$scope.phone,
             'region='+$("#myAddrs").val(),
-            'address='+$scope.address
+            'address='+$scope.address,
+            'yqPhone='+$scope.yqPhone
         ];
         //发送请求
         $http({

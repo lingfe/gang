@@ -14,6 +14,14 @@ import com.gang.pojo.SelectWhere;
 public interface UserInfoService {
 	
 	/**
+	 * 移动端用户注册
+	 * @param user	用户注册数据
+	 * @return	结果
+	 * @author 13068、	lingfe
+	 */
+	public int add(UserInfo user);
+	
+	/**
 	 * 获取所有用户数据
 	 * @author 13068	lingfe
 	 * @return	数据

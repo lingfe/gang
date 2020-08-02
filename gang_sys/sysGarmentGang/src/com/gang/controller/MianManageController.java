@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gang.entity.AccessLog;
@@ -31,6 +32,7 @@ import com.gang.service.LogService;
 import com.gang.service.StyleTypeInfoService;
 import com.gang.service.UserInfoService;
 import com.gang.service.utils.GetIpUtil;
+import com.gang.utils.OpenIdUtil;
 
 /**
  * 后台管理，操作请求
@@ -60,6 +62,14 @@ public class MianManageController {
 	
 	@Autowired
 	private AppointmentinformationService appointmentinformationService;
+
+	
+	@RequestMapping(value="/openid",method={RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public String getOpenid(String code){
+		String oepnid=OpenIdUtil.oauth2GetOpenid(code, "1");
+		return oepnid;
+	}
 	
 	/**
 	 * 进入登陆

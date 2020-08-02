@@ -18,6 +18,11 @@ public class UserInfoServiceImpl implements UserInfoService {
 	private UserInfoDao userInfoDao;
 	
 	@Override
+	public int add(UserInfo user) {
+		return userInfoDao.add(user);
+	}
+	
+	@Override
 	public void updateLastTime(Date date, String id) {
 		userInfoDao.updateLastTime(date, id);
 	}

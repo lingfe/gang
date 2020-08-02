@@ -46,7 +46,7 @@
     <servlet-name>code</servlet-name>
     <servlet-class>
 			com.gang.servlet.VcodeServlet
-		</servlet-class>
+	</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>code</servlet-name>

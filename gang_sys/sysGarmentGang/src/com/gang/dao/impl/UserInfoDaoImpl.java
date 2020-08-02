@@ -64,4 +64,26 @@ public class UserInfoDaoImpl implements UserInfoDao {
 		return (st == null || st.size() == 0) ? null : st.get(0);
 	}
 
+	@Override
+	public int add(UserInfo user) {
+		String sql="insert  INTO `userinfo` "
+				+ "(`id`,`appId`,`username`,`realname`,`avatarUrl`,`ename`,`pwd`,`token`,`tel`, `fax`,"
+				+ "`email`,`mobile`,`qq`,`balance`,`lastTime`,"
+				+ "`state`,`idCard`,`provinceCode`,`provinceName`,`cityCode`,`cityName`,`regionCode`,`regionName`,`address`,`remark`,"
+				+ "`cdate`,`mdate`,`creator`,`modify`,`version`) "
+				+ "VALUES "
+				+ "(?,?,?,NULL,NULL,NULL,"
+				+ "?,NULL,"
+				+ "?,NULL,"
+				+ "?,NULL,NULL,0,?,"
+				+ "?,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,"
+				+ "?,?,?,?,?)";
+		return jdbcTemplate.update(sql, new Object[] { user.getId(),user.getAppId(),user.getUserName(),
+				user.getPwd(),
+				user.getTel(),
+				user.getEmail(),user.getLastTime(),
+				user.getState(),
+				user.getCdate(),user.getMdate(),user.getCreator(),user.getModify(),user.getVersion()});
+	}
+
 }

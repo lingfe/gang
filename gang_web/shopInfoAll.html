@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-cn">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no">
+    <meta content="no-cache" http-equiv="Pragma">
+    <title>单西</title>
+    <meta name="Keywords" content="西服定制，西服定做，男式西服定制品牌，男士西服定制，西服订做，高级西服定制">
+    <meta name="Description" content="衣邦人单西定制服务，提供西服定制，西服定做，男式西服定制品牌，男士西服定制，西服订做，高级西服定制等。单西定制，就找衣邦人。">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/list.css">
+    <link rel="stylesheet" href="css/dropload.min.css">
+    <link rel="stylesheet" href="css/shopInfo.css">
+
+  </head>
+  
+  <!-- angularJs -->
+  <body ng-app="myApp" ng-controller="shopInfoAll"  style="padding-top: 90px;">
+    <!-- 广告  start  -->
+    <div class="advertising">
+        <a href="" data-ajax="false">
+            <img style="width:100%;height:50px;float:left;" 
+            src="https://raw.githubusercontent.com/lingfe/gang/master/resource/images/public/1.jpg">
+        </a>
+    </div>
+    <!-- 广告  end  -->
+
+    <!-- 内容  start  -->
+    <div class="inner" style="margin-bottom: 70px">
+      <div class="lists">
+        <div class="tlist" ng-repeat="item in list">
+          <a href="javascript:;" ng-click="goInfo(item.id)">
+            <img class="WSCSlide_img lazy"  src="{{item.imgCover}}" />
+            <div class="desc">
+              <p class="p_title">
+                <span class="name">{{item.clothingName}}</span>
+                <span class="coup">{{item.lable}}</span></p>
+              <p class="p_desc">{{item.material}}</p>
+              <p class="p_num">
+                <font color="#222222">￥{{item.salesPrice}}</font>
+                <!--<s>吊牌价：{{item.tagPrice}}</s>--></p>
+            </div>
+          </a>
+        </div>
+
+        <div class="tlist">
+          <a href="/home/itemdetail/YS0348/from/WX-CD-YYLT">
+            <img class="WSCSlide_img lazy" src="//appybrencdn.oss-cn-hangzhou.aliyuncs.com/Uploads/Items/CoverRectangle/2018-01-03/5a4cbbdf5f532.jpg" />
+            <div class="desc">
+              <p class="p_title">
+                <span class="name">蓝色青果领男士时尚休闲单西 10378</span>
+                <span class="coup">奢牌</span></p>
+              <p class="p_desc">意大利进口Cerruti 1881面料 48%羊毛37%马海毛15%真丝</p>
+              <p class="p_num">
+                <font color="#222222">￥6253.00</font>
+                <!--<s>吊牌价：12506.00</s>--></p>
+            </div>
+          </a>
+        </div>
+        <div class="tlist">
+          <a href="/home/itemdetail/YS0217/from/WX-CD-YYLT">
+            <img class="WSCSlide_img lazy" src="//appybrencdn.oss-cn-hangzhou.aliyuncs.com/Uploads/Items/CoverRectangle/2018-01-03/5a4c7188762a2.jpg" />
+            <div class="desc">
+              <p class="p_title">
+                <span class="name">天蓝色清凉感男士休闲单西 10242</span></p>
+              <p class="p_desc">100%羊毛 SUPER120S</p>
+              <p class="p_num">
+                <font color="#222222">￥2320.00</font>
+                <!--<s>吊牌价：4640.00</s>--></p>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+    <!-- 内容  end  -->
+    
+    <!-- 预约  start  -->
+    <div class="bottom"><a href="home.html" target="ifms">预约美女免费上门量体</a></div>
+    <!-- 预约  end  -->
+
+    <!-- js 脚本  -->
+    <script src="js/swiper.min.js"></script>
+    <script src="js/jquery.1.7.2.min.js"></script>
+    <script src="js/jquery.lazyload.js"></script>
+    <script src="js/wap-head.js"></script>
+    <script src="js/angular.min.js" type="text/javascript" ></script>
+    <script src="js/shopInfoAll.js"></script>
+  </body>
+</html>

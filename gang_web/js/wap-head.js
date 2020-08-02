@@ -3,6 +3,13 @@
         var hh = $(window).width();
         var th = (hh-hw)/2;
         $('.headimg').css('padding-right',th+'px');
+        $('.underlay').on("click",function(){
+                            $(".navigation").addClass('-closed');
+                            $("body").unbind("touchmove");
+                            $('.second').hide();
+                             $('.help').show();
+                            return false;
+        }) 
             $(".home").on("click",function(){
                   $("body").bind("touchmove",function(event){event.preventDefault;},false); 
                 
